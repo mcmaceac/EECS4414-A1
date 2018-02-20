@@ -52,3 +52,6 @@ plot.show()
 
 #B part v
 print("Average shortest path length: %s" % nx.average_shortest_path_length(G))
+
+#B part vi
+print("Diameter of the graph: %s" % nx.diameter(G))
