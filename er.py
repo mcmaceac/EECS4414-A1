@@ -16,7 +16,7 @@ def extract_length_distribution(dict):
 	return collections.Counter(result)
 
 n = 1000
-p = 1/6
+p = 1/60
 G = nx.erdos_renyi_graph(n, p)
 
 #B part i
@@ -32,7 +32,8 @@ x = list(clust.keys())
 y = list(clust.values())
 plot.ylabel('Clustering Coefficient')
 plot.xlabel('Node Number')
-plot.plot(x, y)
+x_pos = np.arange(len(x))
+plot.bar(x_pos, y, align='center', alpha=0.5)
 plot.show()
 
 #B part iii
