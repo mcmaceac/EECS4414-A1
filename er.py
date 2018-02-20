@@ -49,3 +49,6 @@ x_pos = np.arange(len(x))
 plot.bar(x_pos, y, align='center', alpha=0.5)
 plot.xticks(x_pos, x)
 plot.show()
+
+#B part v
+print("Average shortest path length: %s" % nx.average_shortest_path_length(G))
