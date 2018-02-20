@@ -8,5 +8,9 @@ p = 1/6
 
 G = nx.erdos_renyi_graph(n, p)
 
-nx.draw(G)
-plot.show(G)
+i = nx.degree_histogram(G)
+
+plot.ylabel('Node Degree')
+plot.xlabel('Frequency')
+plot.plot(i)
+plot.show()
