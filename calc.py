@@ -20,20 +20,41 @@ def computeGraphMeasurements(G, fileName):
 
 	file = open(fileName + "/" + fileName + "_data.txt", "w")
 	
+	saveGraph(G, fileName)
+	degreeDistribution(G, fileName)
+	clusteringDistribution(G, fileName)
+	splDistribution(G, fileName)
+
+	#B part iii
+	#print("Global clustering coefficient: %s" % nx.average_clustering(G))
+	file.write("Global clustering coefficient: %s\n" % nx.average_clustering(G))
+
+	#B part v
+	#print("Average shortest path length: %s" % nx.average_shortest_path_length(G))
+	file.write("Average shortest path length: %s\n" % nx.average_shortest_path_length(G))
+
+	#B part vi
+	#print("Diameter of the graph: %s" % nx.diameter(G))
+	file.write("Diameter of the graph: %s\n" % nx.diameter(G))
+	file.close()
+	
+def saveGraph(G, fileName):
 	#storing the adjacency list of the generated graph for later use
 	fh = open(fileName + "/" + fileName + ".adjlist", "wb")
 	nx.write_adjlist(G, fh)
 	fh.close()
 	
+def degreeDistribution(G, fileName):
 	#B part i
 	i = nx.degree_histogram(G)		#A list of frequencies of degrees. The degree values are the index in the list.
 	plot.ylabel('Frequency')
 	plot.xlabel('Node degree')
 	plot.plot(i)
 	#plot.show()			#only needed for on demand testing
-	plot.savefig(fileName + "/" + fileName + "_degree_dist.png")
-
+	plot.savefig(fileName + "/" + fileName + "_degree_dist.pdf")
+	plot.close()
 	
+def clusteringDistribution(G, fileName):
 	#B part ii
 	clust = nx.clustering(G)
 	x = list(clust.keys())
@@ -43,12 +64,10 @@ def computeGraphMeasurements(G, fileName):
 	x_pos = np.arange(len(x))
 	plot.bar(x_pos, y, align='center', alpha=0.5)
 	#plot.show()
-	plot.savefig(fileName + "/" + fileName + "_clust_dist.png")
-
-	#B part iii
-	#print("Global clustering coefficient: %s" % nx.average_clustering(G))
-	file.write("Global clustering coefficient: %s\n" % nx.average_clustering(G))
-
+	plot.savefig(fileName + "/" + fileName + "_clust_dist.pdf")
+	plot.close()
+	
+def splDistribution(G, fileName):
 	#B part iv
 	shortestPathDicts = list(nx.shortest_path_length(G).values())
 	length_dist = extract_length_distribution(shortestPathDicts)
@@ -60,13 +79,5 @@ def computeGraphMeasurements(G, fileName):
 	plot.bar(x_pos, y, align='center', alpha=0.5)
 	plot.xticks(x_pos, x)
 	#plot.show()
-	plot.savefig(fileName + "/" + fileName + "_spl_dist.png")
-
-	#B part v
-	#print("Average shortest path length: %s" % nx.average_shortest_path_length(G))
-	file.write("Average shortest path length: %s\n" % nx.average_shortest_path_length(G))
-
-	#B part vi
-	#print("Diameter of the graph: %s" % nx.diameter(G))
-	file.write("Diameter of the graph: %s\n" % nx.diameter(G))
-	file.close()
+	plot.savefig(fileName + "/" + fileName + "_spl_dist.pdf")
+	plot.close()
