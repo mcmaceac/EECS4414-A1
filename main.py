@@ -1,4 +1,10 @@
 import networkx as nx 
+import matplotlib.pyplot as plot 
+
+def showGraph(G):
+	#show the graph itself
+	nx.draw(G, node_size = [3 for v in G])
+	plot.show()
 
 from calc import computeGraphMeasurements
 
@@ -14,4 +20,6 @@ G = nx.watts_strogatz_graph(n, k, p)
 
 #G = nx.barabasi_albert_graph(n, m)
 
-computeGraphMeasurements(G)
+showGraph(G)
+#computeGraphMeasurements(G)
+
