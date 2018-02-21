@@ -15,11 +15,11 @@ def extract_length_distribution(dict):
 			result.append(length)
 	return collections.Counter(result)
 
-n = 10000
-p = 1/20
-G = nx.erdos_renyi_graph(n, p)
 
 def computeGraphMeasurements(G):
+	#show the graph itself first
+	nx.draw(G, node_size = [3 for v in G])
+	plot.show()
 
 	#B part i
 	i = nx.degree_histogram(G)
