@@ -1,0 +1,3 @@
+Global clustering coefficient: 0.29732087301587146
+Average shortest path length: 10.214626522652265
+Diameter of the graph: 19
