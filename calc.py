@@ -17,14 +17,11 @@ def extract_length_distribution(dict):
 
 
 def computeGraphMeasurements(G):
-	#show the graph itself first
-	nx.draw(G, node_size = [3 for v in G])
-	plot.show()
 
 	#B part i
-	i = nx.degree_histogram(G)
-	plot.ylabel('Node Degree')
-	plot.xlabel('Frequency')
+	i = nx.degree_histogram(G)		#A list of frequencies of degrees. The degree values are the index in the list.
+	plot.ylabel('Frequency')
+	plot.xlabel('Node degree')
 	plot.plot(i)
 	plot.show()
 
