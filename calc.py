@@ -18,13 +18,12 @@ def extract_length_distribution(dict):
 
 def computeGraphMeasurements(G, fileName):
 
-	file = open(fileName + "/" + fileName + "_data.txt", "w")
-	
 	saveGraph(G, fileName)
 	degreeDistribution(G, fileName)
 	clusteringDistribution(G, fileName)
 	splDistribution(G, fileName)
 
+	file = open(fileName + "/" + fileName + "_data.txt", "w")
 	#B part iii
 	#print("Global clustering coefficient: %s" % nx.average_clustering(G))
 	file.write("Global clustering coefficient: %s\n" % nx.average_clustering(G))

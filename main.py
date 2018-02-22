@@ -14,7 +14,7 @@ def erdos_graphs():
 	G1 = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G1, fileName)
 	
-	p = 1/10
+	p = 1/2
 	fileName = "er2"
 	G2 = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G2, fileName)
@@ -97,6 +97,6 @@ def barabasi_graphs():
 
 	
 erdos_graphs()
-watts_graphs()
-barabasi_graphs()
+#watts_graphs()
+#barabasi_graphs()
 
