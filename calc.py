@@ -23,6 +23,7 @@ def computeGraphMeasurements(G, fileName):
 	clusteringDistribution(G, fileName)
 	splDistribution(G, fileName)
 
+	print("Starting txt file data for " + fileName + "...")
 	file = open(fileName + "/" + fileName + "_data.txt", "w")
 	#B part iii
 	#print("Global clustering coefficient: %s" % nx.average_clustering(G))
@@ -36,6 +37,7 @@ def computeGraphMeasurements(G, fileName):
 	#print("Diameter of the graph: %s" % nx.diameter(G))
 	file.write("Diameter of the graph: %s\n" % nx.diameter(G))
 	file.close()
+	print("Finished txt file data for " + fileName + "...")
 	
 def saveGraph(G, fileName):
 	#storing the adjacency list of the generated graph for later use
@@ -44,6 +46,7 @@ def saveGraph(G, fileName):
 	fh.close()
 	
 def degreeDistribution(G, fileName):
+	print("Starting degree distribution for " + fileName + "...")
 	#B part i
 	i = nx.degree_histogram(G)		#A list of frequencies of degrees. The degree values are the index in the list.
 	plot.ylabel('Frequency')
@@ -52,8 +55,10 @@ def degreeDistribution(G, fileName):
 	#plot.show()			#only needed for on demand testing
 	plot.savefig(fileName + "/" + fileName + "_degree_dist.pdf")
 	plot.close()
+	print("Finished degree distribution for " + fileName)
 	
 def clusteringDistribution(G, fileName):
+	print("Starting clustering distribution for " + fileName + "...")
 	#B part ii
 	clust = nx.clustering(G)
 	x = list(clust.keys())
@@ -65,8 +70,10 @@ def clusteringDistribution(G, fileName):
 	#plot.show()
 	plot.savefig(fileName + "/" + fileName + "_clust_dist.pdf")
 	plot.close()
+	print("Finished clustering distribution for " + fileName)
 	
 def splDistribution(G, fileName):
+	print("Starting shortest path distribution for " + fileName + "...")
 	#B part iv
 	shortestPathDicts = list(nx.shortest_path_length(G).values())
 	length_dist = extract_length_distribution(shortestPathDicts)
@@ -80,3 +87,4 @@ def splDistribution(G, fileName):
 	#plot.show()
 	plot.savefig(fileName + "/" + fileName + "_spl_dist.pdf")
 	plot.close()
+	print("Finished shortest path distribution for " + fileName)
