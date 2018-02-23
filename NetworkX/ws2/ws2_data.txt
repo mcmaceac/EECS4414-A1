@@ -1,0 +1,1 @@
+Global clustering coefficient: 0.0
