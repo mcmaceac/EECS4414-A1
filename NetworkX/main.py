@@ -8,8 +8,8 @@ def showGraph(G):
 	plot.show()
 	
 def erdos_graphs():
-	n = 10000
-	'''
+	n = 1000
+	
 	p = 1/6
 	fileName = "er1"
 	print("Generating graph " + fileName)
@@ -19,7 +19,7 @@ def erdos_graphs():
 	p = 1/2
 	fileName = "er2"
 	print("Generating graph " + fileName)
-	G2 = nx.erdos_renyi_graph(n, p)
+	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 	
 	p = 1/16
@@ -33,9 +33,9 @@ def erdos_graphs():
 	print("Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
-	'''
 	
-	p = 1/50
+	
+	p = 1/6
 	fileName = "er5"
 	print("Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
@@ -104,6 +104,6 @@ def barabasi_graphs():
 
 	
 erdos_graphs()
-#watts_graphs()
-#barabasi_graphs()
+watts_graphs()
+barabasi_graphs()
 
