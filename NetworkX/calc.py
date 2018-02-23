@@ -4,16 +4,17 @@ import numpy as np
 import sys 
 import re
 import collections
+import time
+import datetime
 
-def extract_length_distribution(dict):
-	#this function takes the list of dictionaries from the shortest_path_length function
-	#and extracts the path lengths to return a dictionary of the number of shortest path lengths
-	#where the key is the path length
-	result = []
-	for dictionary in dict:
-		for length in dictionary.values():
-			result.append(length)
-	return collections.Counter(result)
+def extract_length_distribution(G):
+	#this function extracts the lengths of all shortest paths and returns it as a dictionary
+	#where the key is the path length and the value if the number of paths of that length in G
+	lengths = []
+	for splTuple in nx.shortest_path_length(G):
+		for len in splTuple[1].values():
+			lengths.append(len)
+	return collections.Counter(lengths)
 
 
 def computeGraphMeasurements(G, fileName):
@@ -23,7 +24,7 @@ def computeGraphMeasurements(G, fileName):
 	clusteringDistribution(G, fileName)
 	splDistribution(G, fileName)
 
-	print("Starting txt file data for " + fileName + "...")
+	print("[" + getTimeStamp() + "]" + "Starting txt file data for " + fileName + "...")
 	file = open(fileName + "/" + fileName + "_data.txt", "w")
 	#B part iii
 	#print("Global clustering coefficient: %s" % nx.average_clustering(G))
@@ -37,7 +38,7 @@ def computeGraphMeasurements(G, fileName):
 	#print("Diameter of the graph: %s" % nx.diameter(G))
 	file.write("Diameter of the graph: %s\n" % nx.diameter(G))
 	file.close()
-	print("Finished txt file data for " + fileName + "...")
+	print("[" + getTimeStamp() + "]" + "Finished txt file data for " + fileName + "...")
 	
 def saveGraph(G, fileName):
 	#storing the adjacency list of the generated graph for later use
@@ -46,7 +47,7 @@ def saveGraph(G, fileName):
 	fh.close()
 	
 def degreeDistribution(G, fileName):
-	print("Starting degree distribution for " + fileName + "...")
+	print("[" + getTimeStamp() + "]" + "Starting degree distribution for " + fileName + "...")
 	#B part i
 	i = nx.degree_histogram(G)		#A list of frequencies of degrees. The degree values are the index in the list.
 	plot.ylabel('Frequency')
@@ -55,10 +56,10 @@ def degreeDistribution(G, fileName):
 	#plot.show()			#only needed for on demand testing
 	plot.savefig(fileName + "/" + fileName + "_degree_dist.pdf")
 	plot.close()
-	print("Finished degree distribution for " + fileName)
+	print("[" + getTimeStamp() + "]" + "Finished degree distribution for " + fileName)
 	
 def clusteringDistribution(G, fileName):
-	print("Starting clustering distribution for " + fileName + "...")
+	print("[" + getTimeStamp() + "]" + "Starting clustering distribution for " + fileName + "...")
 	#B part ii
 	clust = nx.clustering(G)
 	x = list(clust.keys())
@@ -70,13 +71,12 @@ def clusteringDistribution(G, fileName):
 	#plot.show()
 	plot.savefig(fileName + "/" + fileName + "_clust_dist.pdf")
 	plot.close()
-	print("Finished clustering distribution for " + fileName)
+	print("[" + getTimeStamp() + "]" + "Finished clustering distribution for " + fileName)
 	
 def splDistribution(G, fileName):
-	print("Starting shortest path distribution for " + fileName + "...")
+	print("[" + getTimeStamp() + "]" + "Starting shortest path distribution for " + fileName + "...")
 	#B part iv
-	shortestPathDicts = list(nx.shortest_path_length(G).values())
-	length_dist = extract_length_distribution(shortestPathDicts)
+	length_dist = extract_length_distribution(G)
 	x = list(length_dist.keys())
 	y = list(length_dist.values())
 	plot.xlabel('Shortest Path Length')
@@ -87,4 +87,8 @@ def splDistribution(G, fileName):
 	#plot.show()
 	plot.savefig(fileName + "/" + fileName + "_spl_dist.pdf")
 	plot.close()
-	print("Finished shortest path distribution for " + fileName)
+	print("[" + getTimeStamp() + "]" + "Finished shortest path distribution for " + fileName)
+
+def getTimeStamp():
+	ts = time.time()
+	return datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
