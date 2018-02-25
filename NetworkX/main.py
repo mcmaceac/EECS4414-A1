@@ -8,39 +8,39 @@ def showGraph(G):
 	plot.show()
 	
 def erdos_graphs():
-	'''
 	n = 10000
+	'''
 	p = 1/6
 	fileName = "er1"
 	print("Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
-	
-	p = 1/2
+	'''
+	p = 1/100
 	fileName = "er2"
 	print("Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 	
-	p = 1/16
+	p = 1/125
 	fileName = "er3"
 	print("Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 	
-	p = 1/5
+	p = 1/50
 	fileName = "er4"
 	print("Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 	
 	
-	p = 1/6
+	p = 1/75
 	fileName = "er5"
 	print("Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
-	'''
+
 	n = 1000
 	p = 1/6
 	fileName = "er6"
@@ -49,7 +49,7 @@ def erdos_graphs():
 	computeGraphMeasurements(G, fileName)
 
 def watts_graphs():
-	'''
+	
 	n = 10000
 	k = 4		#Each node is connected to k nearest neighbors in ring topology
 	p = 1/6		#Each node is connected to k nearest neighbours with probability p to rewire
@@ -80,7 +80,7 @@ def watts_graphs():
 	fileName = "ws5"
 	G = nx.watts_strogatz_graph(n, k, p)
 	computeGraphMeasurements(G, fileName)
-	'''
+	
 	n = 1000
 	p = 1/5
 	k = 20
@@ -124,5 +124,5 @@ def barabasi_graphs():
 	
 erdos_graphs()
 watts_graphs()
-#barabasi_graphs()
+barabasi_graphs()
 
