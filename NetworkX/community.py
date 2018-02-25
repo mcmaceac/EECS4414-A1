@@ -4,6 +4,7 @@ import networkx as nx
 import matplotlib.pyplot as plot 
 from networkx.algorithms.community.centrality import girvan_newman
 
+
 def detectCommunities(G, fileName):
 	communitySizes = []
 	k = 10	#stop after reaching greater than 10 communities
@@ -19,26 +20,32 @@ def detectCommunities(G, fileName):
 
 def saveCommunities(communityLengths, fileName):
 	file = open(fileName + "/" + fileName + "_communities.txt", "w")
-	file.write(communityLengths)
+	file.write(str(communityLengths))
 	file.close()
 
-fileName = "er1"
+'''
+fileName = "ws6"
 fh = open(fileName + "/" + fileName + ".adjlist", "rb")
 G = nx.read_adjlist(fh)
 print(fileName + " loaded")
 fh.close()
 detectCommunities(G, fileName)
-
-fileName = "ws1"
+'''
+fileName = "ba6"
+fh = open(fileName + "/" + fileName + ".adjlist", "rb")
+G = nx.read_adjlist(fh)
+n = 1000
+m = 10
+fileName = "ba6"
+G = nx.nx.barabasi_albert_graph(n, m)
+print(fileName + " loaded")
+fh.close()
+detectCommunities(G, fileName)
+'''
+fileName = "er6"
 fh = open(fileName + "/" + fileName + ".adjlist", "rb")
 G = nx.read_adjlist(fh)
 print(fileName + " loaded")
 fh.close()
 detectCommunities(G, fileName)
-
-fileName = "ba1"
-fh = open(fileName + "/" + fileName + ".adjlist", "rb")
-G = nx.read_adjlist(fh)
-print(fileName + " loaded")
-fh.close()
-detectCommunities(G, fileName)
+'''
