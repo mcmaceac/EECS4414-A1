@@ -23,29 +23,24 @@ def saveCommunities(communityLengths, fileName):
 	file.write(str(communityLengths))
 	file.close()
 
-'''
+
 fileName = "ws6"
 fh = open(fileName + "/" + fileName + ".adjlist", "rb")
 G = nx.read_adjlist(fh)
 print(fileName + " loaded")
 fh.close()
 detectCommunities(G, fileName)
-'''
+
 fileName = "ba6"
 fh = open(fileName + "/" + fileName + ".adjlist", "rb")
 G = nx.read_adjlist(fh)
-n = 1000
-m = 10
-fileName = "ba6"
-G = nx.nx.barabasi_albert_graph(n, m)
 print(fileName + " loaded")
 fh.close()
 detectCommunities(G, fileName)
-'''
+
 fileName = "er6"
 fh = open(fileName + "/" + fileName + ".adjlist", "rb")
 G = nx.read_adjlist(fh)
 print(fileName + " loaded")
 fh.close()
 detectCommunities(G, fileName)
-'''

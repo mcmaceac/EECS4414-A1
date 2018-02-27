@@ -1,6 +1,7 @@
 import networkx as nx 
 import matplotlib.pyplot as plot 
 from calc import computeGraphMeasurements
+from calc import getTimeStamp
 
 def showGraph(G):
 	#show the graph itself
@@ -9,44 +10,45 @@ def showGraph(G):
 	
 def erdos_graphs():
 	n = 10000
-	'''
 	p = 1/6
 	fileName = "er1"
-	print("Generating graph " + fileName)
+	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
-	'''
+	
 	p = 1/100
 	fileName = "er2"
-	print("Generating graph " + fileName)
+	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 	
 	p = 1/125
 	fileName = "er3"
-	print("Generating graph " + fileName)
+	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 	
-	p = 1/50
+	p = 1/200
 	fileName = "er4"
-	print("Generating graph " + fileName)
+	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 	
-	
-	p = 1/75
-	fileName = "er5"
-	print("Generating graph " + fileName)
+	n = 1000
+	p = 1/100
+	fileName = "er6"
+	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 
-	n = 1000
-	p = 1/6
-	fileName = "er6"
-	print("Generating graph " + fileName)
+	n = 10000
+	p = 1/150
+	fileName = "er5"
+	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
+	
+	
 
 def watts_graphs():
 	
