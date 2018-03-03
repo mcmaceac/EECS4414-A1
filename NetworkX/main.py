@@ -10,7 +10,7 @@ def showGraph(G):
 	
 def erdos_graphs():
 	n = 10000
-	p = 1/6
+	p = 1/6				#Probability for edge creation.
 	fileName = "er1"
 	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
@@ -33,17 +33,16 @@ def erdos_graphs():
 	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
-	
-	n = 1000
-	p = 1/100
-	fileName = "er6"
+
+	p = 1/150
+	fileName = "er5"
 	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
 
-	n = 10000
-	p = 1/150
-	fileName = "er5"
+	n = 1000
+	p = 1/10
+	fileName = "er6"
 	print("[" + getTimeStamp() + "] Generating graph " + fileName)
 	G = nx.erdos_renyi_graph(n, p)
 	computeGraphMeasurements(G, fileName)
@@ -58,13 +57,13 @@ def watts_graphs():
 	fileName = "ws1"
 	G = nx.watts_strogatz_graph(n, k, p)
 	computeGraphMeasurements(G, fileName)
-	
+
 	p = 1/10
-	k = 2
+	k = 100
 	fileName = "ws2"
 	G = nx.watts_strogatz_graph(n, k, p)
 	computeGraphMeasurements(G, fileName)
-	
+
 	p = 1/16
 	k = 200
 	fileName = "ws3"
@@ -89,7 +88,7 @@ def watts_graphs():
 	fileName = "ws6"
 	G = nx.watts_strogatz_graph(n, k, p)
 	computeGraphMeasurements(G, fileName)
-	
+
 def barabasi_graphs():
 	n = 10000
 	m = 5 	#Number of edges to attach from a new node to existing nodes
