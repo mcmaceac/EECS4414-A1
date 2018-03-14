@@ -44,4 +44,4 @@ is greater than k=10. For each graph report the size (number of nodes) of the 10
 currently found in a descending order (first the size of the largest community, and last the size of the
 smallest community).
 
-Briefly comment on the results and how they compare with each other.
+Briefly comment on the results and how they compare with each other
